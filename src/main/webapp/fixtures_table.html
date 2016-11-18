@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!-- [ published at 2016-11-18 16:00:32 ] -->
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>欧冠积分射手榜|2014/15赛季欧洲冠军联赛_新浪竞技风暴_新浪网</title>
+    <meta name="keywords" content="欧冠积分榜,欧冠射手榜,2014/15赛季欧冠,欧洲冠军联赛,冠军杯"/>
+    <meta name="description" content="新浪体育提供最新的欧洲冠军联赛积分榜和射手榜。"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=1024,maximum-scale=2.0"/>
+    <link rel="stylesheet" href="/static/schedule/css/common.css"/>
+    <script charset="gb2312" src="/static/schedule/require.js"></script>
+    <script type="text/javascript" src="/static/schedule/config1.js"></script>
+</head>
+<body><!-- body code begin -->
+
+<div class="wrap">
+    <div class="standing-nav">
+        <div class="nav-row2">
+            <ul class="udv-clearfix">
+                <li><span class="ctr"><em><a href="table.html?type=4" class="link-fff">英超积分</a></em><span><a
+                        href="index.html?type=4" class="link-fff">赛程</a></span></span><i></i></li>
+                <li><span class="ctr"><em><a href="table.html?type=2" class="link-fff">西甲积分</a></em><span><a
+                        href="index.html?type=2" class="link-fff">赛程</a></span></span><i></i></li>
+                <li><span class="ctr"><em><a href="table.html?type=1" class="link-fff">意甲积分</a></em><span><a
+                        href="index.html?type=1" class="link-fff">赛程</a></span></span><i></i></li>
+                <li><span class="ctr"><em><a href="table.html?type=3" class="link-fff">德甲积分</a></em><span><a
+                        href="index.html?type=3" class="link-fff">赛程</a></span></span><i></i></li>
+                <li><span class="ctr"><em><a href="table.html?type=5" class="link-fff">法甲积分</a></em><span><a
+                        href="index.html?type=5" class="link-fff">赛程</a></span></span><i></i></li>
+                <li class="current"><span class="ctr"><em><a href="fixtures_table.html" class="link-fff">欧冠积分</a></em><span><a
+                        href="fixtures.html" class="link-fff">赛程</a></span></span><i></i></li>
+            </ul>
+        </div>
+    </div>
+    <style type="text/css">
+        .standing-main .title {
+            position: relative;
+        }
+
+        .standing-main .title h3 {
+            float: left;
+            font-weight: normal;
+        }
+
+        .sel-blk {
+            float: right;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .sel-blk label {
+            font-size: 16px;
+        }
+
+        .sel-blk select {
+            width: 120px;
+        }
+    </style>
+
+
+    <div class="standing-main">
+        <div class="title">
+            <h3>积分榜</h3>
+            <div class="sel-blk">
+                <label>过往赛季：</label>
+                <select id="slt_02">
+                    <option value="2015">2015/16赛季</option>
+                    <option value="2014">2014/15赛季</option>
+                    <option value="2013">2013/14赛季</option>
+                    <option value="2012">2012/13赛季</option>
+                    <option value="2011">2011/12赛季</option>
+                </select>
+            </div>
+        </div>
+        <div id="og">
+            <div data-group="A"></div>
+            <div data-group="B"></div>
+            <div data-group="C"></div>
+            <div data-group="D"></div>
+            <div data-group="E"></div>
+            <div data-group="F"></div>
+            <div data-group="G"></div>
+            <div data-group="H"></div>
+        </div>
+        <div class="footer0">
+            <p>注：每个小组积分前两名进入16强，小组第三名进入欧联杯32强；</p>
+            <p>积分相同情况下优先比较相互之间胜负关系来确定排名。</p>
+
+        </div>
+    </div>
+
+
+    <div class="standing-shooter">
+        <div class="title">射手榜</div>
+        <div class="content" id="ssb"></div>
+    </div>
+    <script type="text/javascript">
+        requirejs(['common', '$'], function (Classes) {
+            requirejs(['ogStanding', 'shooterStanding'], function (Main1, Main2) {
+                $(document).ready(function () {
+                    var slt_02_select = new Classes.SimSelect('slt_02');
+                    var argsObj1 = {
+                                url: 'http://platform.sina.com.cn/sports_all/client_api?_sport_t_=football&_sport_s_=opta&_sport_a_=teamOrder',
+                                type: '10',
+                                season: 2016,
+                                ctrId: 'og'
+                            },
+                            argsObj2 = {
+                                type: '10',
+                                ctrId: 'ssb',
+                                season: 2016
+                            };
+                    Main1(argsObj1);
+                    Main2(argsObj2);
+                    slt_02_select.ele.onchange = function () {
+                        argsObj1.season = argsObj2.season = this.value;
+                        Main1(argsObj1);
+                        Main2(argsObj2);
+                    }
+                });
+            });
+        });
+    </script>
+
+</div>
+
+</body>
+</html>

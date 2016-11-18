@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!-- [ published at 2016-11-18 15:10:04 ] -->
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>英超积分射手榜|2016/17赛季英超|英格兰足球甲级联赛_新浪竞技风暴_新浪网</title>
+    <meta name="keywords" content="英超积分榜,英超射手榜,英超积分射手,英超联赛,2016/17赛季英超,2016/17英超,英格兰足球甲级联赛,英格兰甲级联赛"/>
+    <meta name="description" content="英超积分榜,英超射手榜,英超积分射手,英超联赛,2016/17赛季英超,2016/17英超,英格兰足球甲级联赛,英格兰甲级联赛"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=1024,maximum-scale=2.0"/>
+    <link rel="stylesheet" href="/static/schedule/css/common.css"/>
+    <script charset="gb2312" src="/static/schedule/require.js"></script>
+    <script type="text/javascript" src="/static/schedule/config1.js"></script>
+</head>
+<body><!-- body code begin -->
+
+<!-- 导航 end -->
+<div class="wrap">
+    <div class="standing-nav">
+        <div class="nav-row2">
+            <ul class="udv-clearfix">
+                <li id="udv-ul-4"><span class="ctr"><em><a href="table.html?type=4" class="link-fff">英超积分</a></em><span><a
+                        href="index.html?type=4" class="link-fff">赛程</a></span></span><i></i></li>
+                <li id="udv-ul-2"><span class="ctr"><em><a href="table.html?type=2" class="link-fff">西甲积分</a></em><span><a
+                        href="index.html?type=2" class="link-fff">赛程</a></span></span><i></i></li>
+                <li id="udv-ul-1"><span class="ctr"><em><a href="table.html?type=1" class="link-fff">意甲积分</a></em><span><a
+                        href="index.html?type=1" class="link-fff">赛程</a></span></span><i></i></li>
+                <li id="udv-ul-3"><span class="ctr"><em><a href="table.html?type=3" class="link-fff">德甲积分</a></em><span><a
+                        href="index.html?type=3" class="link-fff">赛程</a></span></span><i></i></li>
+                <li id="udv-ul-5"><span class="ctr"><em><a href="table.html?type=5" class="link-fff">法甲积分</a></em><span><a
+                        href="index.html?type=5" class="link-fff">赛程</a></span></span><i></i></li>
+                <li><span class="ctr"><em><a href="http://sports.sina.com.cn/g/ucl/table.html" class="link-fff">欧冠积分</a></em><span><a
+                        href="http://sports.sina.com.cn/g/ucl/fixtures.html"
+                        class="link-fff">赛程</a></span></span><i></i></li>
+
+            </ul>
+        </div>
+    </div>
+    <style type="text/css">
+        .standing-main .title {
+            position: relative;
+        }
+
+        .standing-main .title h3 {
+            float: left;
+            font-weight: normal;
+        }
+
+        .sel-blk {
+            float: right;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .sel-blk label {
+            font-size: 16px;
+        }
+
+        .sel-blk select {
+            width: 120px;
+        }
+
+    </style>
+
+
+    <div class="standing-main">
+        <div class="title">
+            <h3>积分榜</h3>
+            <div class="sel-blk">
+                <label>过往赛季：</label>
+                <select id="slt_02">
+                    <option value="2015">2015/16赛季</option>
+                    <option value="2014">2014/15赛季</option>
+                    <option value="2013">2013/14赛季</option>
+                    <option value="2012">2012/13赛季</option>
+                    <option value="2011">2011/12赛季</option>
+                </select>
+            </div>
+        </div>
+        <div class="content" id="jfb"></div>
+        <div class="footer0">
+            <p>注：英超前三名获欧冠小组赛参赛资格，第四名获欧冠资格赛参赛资格，第五名获欧联杯参赛资格；第18到20名降级。</p>
+            <p>同分球队之间净胜球占优者居前。</p>
+            <p>射手榜排名依次套用规则：1.进球多者居前，2.点球少者居前，3.助攻数多者居前，4.出场时间少者居前。本站进球、助攻数据由OPTA提供。</p>
+        </div>
+    </div>
+
+
+    <div class="standing-shooter">
+        <div class="title" name="shooter">射手榜</div>
+        <div class="content" id="ssb"></div>
+    </div>
+    <script type="text/javascript">
+        requirejs(['common', '$'], function (Classes) {
+            requirejs(['defalutStanding', 'shooterStanding'], function (Main1, Main2) {
+                $(document).ready(function () {
+                    var slt_02_select = new Classes.SimSelect('slt_02');
+                    var clrs = [['red', 'red', 'yellow', 'green', 'green', '', '', '', 'gray', 'gray', 'gray'],
+                        ['red', 'red', 'red', 'yellow', 'green', 'green', '', '', 'gray', 'gray', 'gray'],
+                        ['red', 'red', 'red', 'yellow', 'green', 'green', 'gray', 'gray', 'gray', '', ''],
+                        ['red', 'red', 'red', 'yellow', 'green', '', '', '', 'gray', 'gray', 'gray'],
+                        ['red', 'red', 'yellow', 'green', '', '', '', '', 'gray', 'gray', 'gray']];
+                    var i = 4 - 1;
+
+                    var type = GetQueryString("type");
+                    if (!type) {
+                        type = 4
+                    }
+                    var argsObj1 = {
+                                url: 'http://platform.sina.com.cn/sports_all/client_api?_sport_t_=football&_sport_s_=opta&_sport_a_=teamOrder&use_type=group',
+                                type: type,
+                                season: 2016,
+                                color1: clrs[i][0],
+                                color2: clrs[i][1],
+                                color3: clrs[i][2],
+                                color4: clrs[i][3],
+                                color5: clrs[i][4],
+                                color6: clrs[i][5],
+                                color16: clrs[i][6],
+                                color17: clrs[i][7],
+                                color18: clrs[i][8],
+                                color19: clrs[i][9],
+                                color20: clrs[i][10],
+                                ctrId: 'jfb'
+                            },
+                            argsObj2 = {
+                                type: type,
+                                ctrId: 'ssb',
+                                season: 2016
+                            };
+                    Main1(argsObj1);
+                    Main2(argsObj2);
+
+                    slt_02_select.ele.onchange = function () {
+                        argsObj1.season = argsObj2.season = this.value;
+                        // argsObj2.season = this.value;
+                        Main1(argsObj1);
+                        Main2(argsObj2);
+                    }
+
+                    //渲染选中状态
+                    $("#udv-ul-" + type).addClass("current");
+                });
+            });
+        });
+
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null)return unescape(r[2]);
+            return null;
+        }
+    </script>
+</div>
+
+</body>
+</html>

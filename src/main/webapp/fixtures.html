@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!-- [ published at 2016-11-18 11:30:34 ] -->
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>欧冠赛程赛果|2014/15赛季欧洲冠军联赛</title>
+    <meta name="keywords" content="欧冠赛程赛果,2014/15赛季欧冠,欧洲冠军联赛,冠军杯"/>
+    <meta name="description" content="新浪体育提供最新的欧洲冠军联赛赛程和赛果。"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=1024,maximum-scale=2.0"/>
+    <link rel="stylesheet" href="/static/schedule/css/common.css"/>
+    <script charset="gb2312" src="/static/schedule/require.js"></script>
+    <script type="text/javascript" src="/static/schedule/config1.js"></script>
+</head>
+<body>
+<!-- 导航 begin -->
+<style type="text/css">
+    .secondaryHeader a, .secondaryHeader a:visited {
+        color: #000;
+        text-decoration: none;
+    }
+
+    .secondaryHeader a:hover, .secondaryHeader a:active {
+        color: #c00;
+        text-decoration: underline;
+    }
+
+    .sHLogo span, .sHLogo span a {
+        display: block;
+        *float: left;
+        display: table-cell;
+        vertical-align: middle;
+        *display: block;
+        *font-size: 27px;
+        *font-family: Arial;
+        height: 31px;
+    }
+
+    .sHLogo span, .sHLogo span a img {
+        vertical-align: middle;
+    }
+
+    .blk07 .txt {
+        padding-left: 22px;
+    }
+
+    .list03 li {
+        border-bottom: none !important
+    }
+    .sel-blk {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+    .sel-blk select {
+        width: 120px;
+    }
+    .sel-blk label {
+        font-size: 16px;
+    }
+</style>
+
+<!-- 导航 end -->
+<div class="wrap">
+    <div class="standing-nav">
+        <div class="nav-row2">
+            <ul class="udv-clearfix">
+                <li><span class="ctr"><em><a href="index.html?type=4" class="link-fff">英超赛程</a></em><span><a
+                        href="table.html?type=4" class="link-fff">积分</a></span></span><i></i></li>
+                <li><span class="ctr"><em><a href="index.html?type=2" class="link-fff">西甲赛程</a></em><span><a
+                        href="table.html?type=2" class="link-fff">积分</a></span></span><i></i></li>
+                <li><span class="ctr"><em><a href="index.html?type=1" class="link-fff">意甲赛程</a></em><span><a
+                        href="table.html?type=1" class="link-fff">积分</a></span></span><i></i></li>
+                <li><span class="ctr"><em><a href="index.html?type=3" class="link-fff">德甲赛程</a></em><span><a
+                        href="table.html?type=3" class="link-fff">积分</a></span></span><i></i></li>
+                <li><span class="ctr"><em><a href="index.html?type=5" class="link-fff">法甲赛程</a></em><span><a
+                        href="table.html?type=5" class="link-fff">积分</a></span></span><i></i></li>
+                <li class="current"><span class="ctr"><em><a href="fixtures.html" class="link-fff">欧冠赛程</a></em><span><a
+                        href="fixtures_table.html" class="link-fff">积分</a></span></span><i></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="schedule-og">
+        <div id="status-ctr"></div>
+        <div id="schedule"></div>
+        <div class="sel-blk">
+            <label>过往赛季：</label> <select id="slt_02">
+            <option value="2016">2016/17赛季</option>
+            <option value="2015">2015/16赛季</option>
+            <option value="2014">2014/15赛季</option>
+            <option value="2013">2013/14赛季</option>
+            <option value="2012">2012/13赛季</option>
+        </select>
+        </div>
+        <div class="footer0">
+            <p>小组排名规则：a.积分，b.同分球队比较相互战绩（考虑客场进球），c.总净胜球数，d.总进球数</p>
+            <p>出线规则：小组第一和第二出线进入欧冠16强，小组第三进入欧联杯32强。</p>
+            <p>淘汰赛抽签规则：1/8决赛时小组第一对阵小组第二，同国和同组球队不相遇，小组第二先打主场；1/4决赛随机抽签；半决赛随机抽签。</p>
+            <p>淘汰赛晋级规则：主客场制，总比分相同时客场进球多者晋级，如再相同踢30分钟加时赛，仍未决出胜负踢点球大战。</p>
+            <p>决赛规则：决赛采取单场制，90分钟未分胜负进入30分钟加时赛，仍未分胜负踢点球大战。</p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        requirejs(['common', '$', 'libs'], function (Classes) {
+            requirejs(['scheduleOg'], function (Main) {
+                $(document).ready(function () {
+                    var slt_02_select = new Classes.SimSelect('slt_02');
+                    Main({
+                        season: 2016
+                    })
+                    slt_02_select.ele.onchange = function () {
+                        Main({
+                            season: this.value
+                        })
+                    }
+                });
+            });
+        });
+    </script>
+</div>
+
+</body>
+</html>
