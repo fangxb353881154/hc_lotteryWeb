@@ -3,13 +3,13 @@
  */
 package com.thinkgem.jeesite.modules.gen.util;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.DefaultResourceLoader;
 
 import com.google.common.collect.Lists;
@@ -30,6 +30,7 @@ import com.thinkgem.jeesite.modules.sys.entity.Area;
 import com.thinkgem.jeesite.modules.sys.entity.Office;
 import com.thinkgem.jeesite.modules.sys.entity.User;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
+import org.springframework.core.io.Resource;
 
 /**
  * 代码生成工具类
@@ -201,15 +202,30 @@ public class GenUtils {
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T fileToObject(String fileName, Class<?> clazz){
-		String pathName = StringUtils.replace(getTemplatePath() + "/" + fileName, "/", File.separator);
-		logger.debug("file to object: {}", pathName);
-		String content = "";
 		try {
-			content = FileUtils.readFileToString(new File(pathName), "utf-8");
-//			logger.debug("read config content: {}", content);
-			return (T) JaxbMapper.fromXml(content, clazz);
+			String pathName = "/templates/modules/gen/" + fileName;
+//			logger.debug("File to object: {}", pathName);
+			Resource resource = new ClassPathResource(pathName);
+			InputStream is = resource.getInputStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+			StringBuilder sb = new StringBuilder();
+			while (true) {
+				String line = br.readLine();
+				if (line == null){
+					break;
+				}
+				sb.append(line).append("\r\n");
+			}
+			if (is != null) {
+				is.close();
+			}
+			if (br != null) {
+				br.close();
+			}
+//			logger.debug("Read file content: {}", sb.toString());
+			return (T) JaxbMapper.fromXml(sb.toString(), clazz);
 		} catch (IOException e) {
-			logger.warn("error convert: {}", e.getMessage());
+			logger.warn("Error file convert: {}", e.getMessage());
 		}
 		return null;
 	}

@@ -406,6 +406,7 @@ $.fn.ajaxSubmit = function(options) {
         if (csrf_param && csrf_token) {
             s.extraData = s.extraData || {};
             s.extraData[csrf_param] = csrf_token;
+
         }
 
         // take a breath so that pending repaints get some cpu time before the upload starts

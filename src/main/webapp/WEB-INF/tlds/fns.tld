@@ -201,7 +201,14 @@
     <name>replaceHtml</name>
     <function-class>com.thinkgem.jeesite.common.utils.StringUtils</function-class>
     <function-signature>java.lang.String replaceHtml(java.lang.String)</function-signature>
-    <example>${fns:replaceHtml(html)}</example>  
+    <example>${fns:replaceHtml(html)}</example>
+  </function>
+  <function>
+    <description>判断是否为空，为空返回默认值</description>
+    <name>setValueIfBlank</name>
+    <function-class>com.thinkgem.jeesite.common.utils.StringUtils</function-class>
+    <function-signature>java.lang.String setValueIfBlank(java.lang.String,java.lang.String)</function-signature>
+    <example>${fns:setValueIfBlank(str,defaultStr)}</example>
   </function>
   <function>
     <description>转换为JS获取对象值，生成三目运算返回结果。</description>
