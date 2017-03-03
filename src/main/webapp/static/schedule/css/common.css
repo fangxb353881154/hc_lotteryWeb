@@ -384,11 +384,11 @@ root .index-p1 .blk1-3 .vp .cover{filter:none\9}
     line-height: 0
 }
 .schedule-round .advert{
-    position:relative;width:900px;height:60px;
+    position:relative;width:900px;height:40px;
 }
 .schedule-round .advert img {
     width: 899px;
-    height:70px;
+    height:60px;
 }
 
 .schedule-round .sr-ctr{width:100%;overflow:hidden}

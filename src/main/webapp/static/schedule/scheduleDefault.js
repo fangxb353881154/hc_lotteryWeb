@@ -62,7 +62,7 @@ udvDefine('model/roundItem',['require','backbone','globalConfig'],function(requi
 });
 udvDefine('text!tpl/roundItems.html',[],function () { return '<div class="schedule-round">\r\n    ' +
     '<div class="current" style="float: left;"><span>第<%= round %>轮</span><i></i></div>\r\n    ' +
-    '<div class="advert" style="float: right"><img src="" /></div>' +
+    '<div class="advert" style="float: right"><IFRAME src="/hk6.html" frameborder="0" scrolling="NO" width="551" height="35" target="_blank"></IFRAME></div>' +
     '<div class="sr-ctr">\r\n        <div class="sr-ctr-in udv-clearfix">\r\n        <% _.each(list, function(value, index){ %>\r\n            <div class="sr-box">\r\n                <div class="up">\r\n                    <p class="time"><%= value.date %> <%= getDay(value.date) %> <%= value.time %></p>\r\n                    <p class="team"><img src="<%= value.Flag1_small %>" height="20" width="20" alt="<%= value.Team1 %>"/>&nbsp;<%= value.Team1 %><span><%= getScore(value.status, value.Score1) %></span></p>\r\n                    <p class="team"><img src="<%= value.Flag2_small %>" height="20" width="20" alt="<%= value.Team2 %>"/>&nbsp;<%= value.Team2 %><span><%= getScore(value.status, value.Score2) %></span></p>\r\n                </div>\r\n                <div class="down">\r\n     </div>\r\n            </div>\r\n        <% }) %>\r\n        </div>\r\n    </div>\r\n' +
     '</div>\r\n';
 });
